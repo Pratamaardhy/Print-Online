@@ -1,3 +1,11 @@
+<?php 
+session_start();
+if(! isset($_SESSION['is_login']))
+{
+  header('location:login.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,8 +48,7 @@
                   </li>
                 </ul>
                 <div class="d-flex">
-                  <a class="button" href="login.php" role="button">Masuk</a>
-                  <a class="button secondary" href="register.php" role="button">Daftar</a>
+                  <a class="button" href="logout.php" role="button">Logout</a>
                 </div>
               </div>
             </div>
@@ -52,8 +59,8 @@
           <div class="container">
             <div class="left">
               <div class="big-title pb-5">
-                <h1>Print Murah,</h1>
-                <h1>Yuk Cetak Dari Rumah.</h1>
+                <h1>Selamat Datang <?php echo $_SESSION['nama']; ?>,</h1>
+                <h1>Yuk Print Online Aja.</h1>
               </div>
               <p class="text">
                 Masih bingung mau print tugas yang lebih mudah dan terjangkau?
