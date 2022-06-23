@@ -20,11 +20,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.stop-scrolling {
-  height: 100%;
-  overflow: hidden;
-}
-
 a {
   text-decoration: none !important;
 }
@@ -34,11 +29,11 @@ a {
   padding: 1.7rem 0 2rem;
   width: 100%;
   min-height: 100vh;
-  overflow: hidden;
   background-color: var(--backgroundColor);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .container {
@@ -197,6 +192,7 @@ header .container {
 .navbar {
   padding-left: 30px !important;
   padding-right: 30px !important;
+  background-color: #f1f8fc !important;
 }
 
 .gap {
@@ -236,4 +232,8 @@ tbody tr:nth-of-type(even) {
 
 tbody tr:last-of-type {
   border-bottom: 2px solid #64bcf4;
+}
+
+footer {
+  background-color: #64bcf4 !important;
 }
