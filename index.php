@@ -14,44 +14,42 @@
 
 <body>
   <main>
-    <div class="big-wrapper light">
-      <img src="./img/shape.png" alt="" class="shape" />
-
-      <header>
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              <img src="./img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
-              Jasa Print Online
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end links" id="navbarNav">
-              <ul class="navbar-nav me-5">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Layanan Kami</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Biaya</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Pembayaran</a>
-                </li>
-              </ul>
-              <div class="d-flex">
-                <a class="button" href="login.php" role="button">Masuk</a>
-                <a class="button secondary" href="register.php" role="button">Daftar</a>
-              </div>
-            </div>
+    <nav class="navbar navbar-expand-lg sticky-top light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="./img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
+          Jasa Print Online
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-flex justify-content-end">
+          <div class="collapse navbar-collapse links" id="navbarNav">
+            <ul class="navbar-nav me-5">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#layanan-kami">Layanan Kami</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#biaya">Biaya</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pembayaran</a>
+              </li>
+            </ul>
           </div>
-        </nav>
-      </header>
+          <div class="d-flex gap-5">
+            <a class="button" style="margin-left: 0;" href="login.php" role="button">Masuk</a>
+            <a class="button secondary" style="margin-left: 0;" href="register.php" role="button">Daftar</a>
+          </div>
+        </div>
+      </div>
+    </nav>
 
+    <div class="big-wrapper light">
       <div class="showcase-area">
         <div class="container">
           <div class="left">
@@ -76,7 +74,7 @@
         </div>
       </div>
 
-      <div class="container text-center" id="layanan-kami">
+      <div class="container text-center my-3" id="layanan-kami">
         <h3 class="mb-5">
           Layanan Kami
         </h3>
@@ -157,8 +155,55 @@
           </tbody>
         </table>
       </div>
+
+      <div class="container text-center my-5" id="layanan-kami">
+        <h3 class="mb-5">
+          Pembayaran
+        </h3>
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <i class="fa-solid fa-money-bill fa-5x my-3" style="color: #64bcf4"></i>
+                <h5>Cash On Delivery</h5>
+                <p>Bayar di tempat, anti khawatir!</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <i class="fa-solid fa-money-bill-transfer fa-5x my-3" style="color: #64bcf4"></i>
+                <h5>Transfer Bank</h5>
+                <p>Bayar dengan transfer, mudah dan cepat!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
+
+  <footer class="w-100 pt-4 flex-shrink-0">
+    <div class="container py-3">
+      <div class="row gy-3 gx-5">
+        <div class="col-lg-4 col-md-6">
+          <h5 class="h3 text-white">Jasa Print Online</h5>
+          <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary"
+              href="#">Jasa Print Online</a></p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="text-white mb-3">Link Penting</h5>
+          <ul class="list-unstyled links text-muted">
+            <li><a href="#" class="mb-2" style="margin-left: 0;">Home</a></li>
+            <li><a href="#layanan-kami" class="mb-2" style="margin-left: 0;">Layanan Kami</a></li>
+            <li><a href="#biaya" class="mb-2" style="margin-left: 0;">Biaya</a></li>
+            <li><a href="#pembayaran" class="mb-2" style="margin-left: 0;">Pembayaran</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- JavaScript Files -->
 
