@@ -1,6 +1,7 @@
-<?php 
+<?php
 session_start();
 include_once('db_connect.php');
+
 $database = new database();
 
 if(isset($_SESSION['is_login']))
@@ -8,10 +9,22 @@ if(isset($_SESSION['is_login']))
     header('location:home.php');
 }
 
+if(isset($_SESSION['is_login_admin']))
+{
+    header('location:admin.php');
+}
+
 if(isset($_COOKIE['username']))
 {
   $database->relogin($_COOKIE['username']);
-  header('location:home.php');
+  if($_SESSION['level'] == "admin")
+  {
+    header('location:admin.php');
+  }
+  else if($_SESSION['level'] == "user")
+  {
+    header('location:home.php');
+  }
 }
 
 if(isset($_POST['login']))
@@ -29,7 +42,14 @@ if(isset($_POST['login']))
 
     if($database->login($username,$password,$remember))
     {
-      header('location:home.php');
+      if($_SESSION['level'] == "admin")
+      {
+        header('location:admin.php');
+      }
+      else if($_SESSION['level'] == "user")
+      {
+        header('location:home.php');
+      }
     }
 }
 ?>
