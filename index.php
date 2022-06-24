@@ -16,7 +16,7 @@
   <main>
     <nav class="navbar navbar-expand-lg sticky-top light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php">
           <img src="./img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
           Jasa Print Online
         </a>
@@ -28,7 +28,10 @@
           <div class="collapse navbar-collapse links" id="navbarNav">
             <ul class="navbar-nav me-5">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="order.php">Order Print</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#layanan-kami">Layanan Kami</a>
@@ -37,7 +40,7 @@
                 <a class="nav-link" href="#biaya">Biaya</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Pembayaran</a>
+                <a class="nav-link" href="#pembayaran">Pembayaran</a>
               </li>
             </ul>
           </div>
@@ -64,7 +67,7 @@
               Jasa print online memberikan solusi, buat kalian para deadliner yang pastinya terpercaya!
             </p>
             <div class="cta">
-              <a href="#" class="button">Coba Sekarang !</a>
+              <a href="order.php" class="button">Coba Sekarang !</a>
             </div>
           </div>
 
@@ -156,7 +159,7 @@
         </table>
       </div>
 
-      <div class="container text-center my-5" id="layanan-kami">
+      <div class="container text-center my-5" id="pembayaran">
         <h3 class="mb-5">
           Pembayaran
         </h3>
