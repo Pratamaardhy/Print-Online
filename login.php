@@ -61,16 +61,16 @@ if(isset($_POST['login']))
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Form Login</title>
-  <link rel="stylesheet" type="text/css" href="./css/style.css?<?php echo time(); ?>" />
-  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?<?php echo time(); ?>" />
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css?<?php echo time(); ?>" />
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css?<?php echo time(); ?>" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
 </head>
 
 <body class="d-flex flex-column h-100 text-center" style="padding-bottom: 0;">
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">
-        <img src="./img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
+        <img src="assets/img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
         Jasa Print Online
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -131,7 +131,7 @@ if(isset($_POST['login']))
 
   <!-- JavaScript Files -->
 
-  <script src="js/bootstrap.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </body>
 

@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.light {
+  --mainColor: #64bcf4;
+  --hoverColor: #5bacdf;
+  --backgroundColor: #f1f8fc;
+  --lightOne: #919191;
+  --lightTwo: #aaa;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.big-wrapper {
+  position: relative;
+  padding: 1.7rem 0 2rem;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--backgroundColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  max-width: 75rem;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+header {
+  position: relative;
+  z-index: 70;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overlay {
+  display: none;
+}
+
+.links {
+  white-space: nowrap;
+}
+
+.links ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.links a {
+  color: var(--lightTwo);
+  margin-left: 4.5rem;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  color: var(--hoverColor);
+  transform: scale(1.05);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  color: #fff !important;
+  background-color: var(--mainColor) !important;
+  border-radius: 16px;
+  text-transform: capitalize;
+  transition: 0.3s;
+  border: none;
+}
+
+.button:hover {
+  background-color: var(--hoverColor);
+  transform: scale(1) !important;
+}
+
+.big-wrapper.active .hamburger-menu .bar {
+  background-color: transparent;
+}
+
+.big-wrapper.active .bar::before {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.big-wrapper.active .bar::after {
+  transform: translateY(0) rotate(45deg);
+}
+
+.showcase-area .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+}
+
+.big-title {
+  font-size: 1.4rem;
+  color: var(--darkOne);
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+
+.text {
+  color: var(--lightOne);
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.showcase-area .btn {
+  box-shadow: 0 0 40px 2px rgba(0, 0, 0, 0.05);
+}
+
+.printer {
+  width: 123%;
+  transform: translate(15%, 25px);
+}
+
+.big-wrapper.light .toggle-btn i:last-child {
+  display: none;
+}
+
+.big-wrapper.light .toggle-btn i:first-child {
+  display: block;
+}
+
+.shape {
+  position: absolute;
+  z-index: 0;
+  width: 500px;
+  bottom: -180px;
+  left: -15px;
+  opacity: 0.1;
+}
+
+.copy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  animation: appear 1s 1 both;
+}
+
+@keyframes appear {
+  0% {
+    clip-path: circle(30% at -25% -25%);
+  }
+
+  100% {
+    clip-path: circle(150% at 0 0);
+  }
+}
+
+.navbar-brand {
+  font-weight: 600 !important;
+  color: #64bcf4 !important;
+}
+
+.nav-link {
+  font-weight: 600 !important;
+}
+
+.secondary {
+  background-color: #fff !important;
+  color: #64bcf4 !important;
+  border: none;
+}
+
+.navbar {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  background-color: #f1f8fc !important;
+}
+
+.gap {
+  column-gap: 30px;
+}
+
+h5 {
+  color: #64bcf4 !important;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+thead tr {
+  background-color: #64bcf4;
+  color: #ffffff;
+}
+
+td {
+  padding: 12px 15px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #c9e5f7;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #c9e5f7;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #64bcf4;
+}
+
+footer {
+  background-color: #64bcf4 !important;
+}

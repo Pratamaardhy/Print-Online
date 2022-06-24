@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jasa Print Online</title>
-  <link rel="stylesheet" type="text/css" href="./css/style.css?<?php echo time(); ?>" />
-  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?<?php echo time(); ?>" />
-  <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css?<?php echo time(); ?>" />
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css?<?php echo time(); ?>" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
   <script src="https://kit.fontawesome.com/fbdc7f93a3.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg sticky-top light">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
-          <img src="./img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
+          <img src="assets/img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
           Jasa Print Online
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -72,7 +72,7 @@
           </div>
 
           <div class="right">
-            <img src="./img/Image.png" alt="Printer" class="printer" />
+            <img src="assets/img/Image.png" alt="Printer" class="printer" />
           </div>
         </div>
       </div>
@@ -210,7 +210,7 @@
 
   <!-- JavaScript Files -->
 
-  <script src="js/bootstrap.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>
