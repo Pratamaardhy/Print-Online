@@ -26,34 +26,32 @@ if(isset($_POST['register']))
   <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 </head>
 
-<body class="d-flex flex-column h-100 big-wrapper light">
-  <header>
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="./img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
-          Jasa Print Online
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end links" id="navbarNav">
-          <ul class="navbar-nav me-5">
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Form Registrasi</a>
-            </li>
-          </ul>
-        </div>
+<body class="d-flex flex-column h-100" style="padding-bottom: 0;">
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.php">
+        <img src="./img/logo.png" alt="" width="50" height="50" class="d-inline me-3">
+        Jasa Print Online
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end links" id="navbarNav">
+        <ul class="navbar-nav me-5">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="login.php">Login</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
-  <main role="main" class="flex-shrink-0">
-    <div class="container">
+  <main role="main" class="flex-shrink-0 big-wrapper light">
+    <div class="container pb-5">
       <h1 class="mt-5">Form Pendaftaran</h1>
       <p class="lead">Silahkan Daftarkan Identitas Anda</p>
       <hr />
@@ -72,14 +70,13 @@ if(isset($_POST['register']))
           </div>
         </div>
 
-
         <div class="form-group row pb-5">
           <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
           </div>
         </div>
-        <div class="container d-flex gap align-items-baseline">
+        <div class="container d-flex gap align-items-baseline" style="padding-left: 0px;">
           <button type="submit" class="button" name="register">Daftar</button>
           <p>Atau</p>
           <a class="button secondary" href="login.php" role="button">Masuk</a>
@@ -89,8 +86,8 @@ if(isset($_POST['register']))
   </main>
 
   <footer class="footer mt-auto py-3">
-    <div class="container">
-      <span class="text-muted">Jasa Print Online - 2022</span>
+    <div class="container text-center">
+      <span class="text-white">Jasa Print Online - 2022</span>
     </div>
   </footer>
 
