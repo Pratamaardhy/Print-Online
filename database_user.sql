@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2022 at 06:11 PM
+-- Generation Time: Jun 25, 2022 at 03:56 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -31,16 +31,19 @@ CREATE TABLE `tb_user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `nama` varchar(255) NOT NULL
+  `nama` varchar(255) NOT NULL,
+  `level` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id`, `username`, `password`, `nama`) VALUES
-(2, 'hanif922', '$2y$10$bhDFWyB4vYWJjt.pIyiRvOPMVkdVSuZvfzj0e7zYJ3bh0.P4Hcycu', 'Hanif Al Fathoni'),
-(8, 'admin', '$2y$10$acNwlsaz6YGSkLXHY3.KnuhK9i1/H4/CosrPU7OwXgqjab5f7pWiS', 'Administrator');
+INSERT INTO `tb_user` (`id`, `username`, `password`, `nama`, `level`) VALUES
+(2, 'hanif922', '$2y$10$bhDFWyB4vYWJjt.pIyiRvOPMVkdVSuZvfzj0e7zYJ3bh0.P4Hcycu', 'Hanif Al Fathoni', 'user'),
+(8, 'admin', '$2y$10$acNwlsaz6YGSkLXHY3.KnuhK9i1/H4/CosrPU7OwXgqjab5f7pWiS', 'Administrator', 'admin'),
+(9, 'alfatoni922', '$2y$10$gSn2kTmyRzOPA2riv5yOcexHQVUg1ebBkfx6IvuRDuanB4R3kaJB6', 'Hanif Al Fathoni', 'user'),
+(10, 'user', '$2y$10$dnCqd6PMoetJUuaBfbPjgu4CXAe4V5bPmSrUBGyFmg.qnuMHe74aC', 'Username', 'user');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +63,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
