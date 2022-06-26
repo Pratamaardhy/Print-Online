@@ -60,84 +60,88 @@ if(! isset($_SESSION['is_login']))
   <main class="light big-wrapper">
     <div id="form-order" class="container py-3">
       <div class="container text-center py-3">
-        <i class="fa-solid fa-cart-plus fa-5x my-3" style="color: #64bcf4"></i>
-        <h3 class="mb-5">Form Order</h3>
+        <i class="fa-solid fa-truck-fast fa-5x my-3" style="color: #64bcf4"></i>
+        <h3 class="mb-5">Opsi Pengiriman</h3>
+      </div>
+
+      <div class="container">
+        <h5 style="color: #64bcf4;" class="mb-3">Opsi Kurir</h5>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="radio" id="kurir-cod" value="kurir-cod" checked>
+          <label class="form-check-label" for="kurir-cod">
+            Kurir COD
+          </label>
+        </div>
+        <div class="form-check mb-5">
+          <input class="form-check-input" type="radio" name="radio" id="kurir-reguler" value="kurir-reguler">
+          <label class="form-check-label" for="kurir-reguler">
+            Kurir Reguler
+          </label>
+        </div>
       </div>
       
       <form method="post" action="">
         <div class="container">
-          <h5 style="color: #64bcf4;" class="mb-3">Rincian Produk</h5>
+          <h5 style="color: #64bcf4;" class="mb-3">Alamat Rumah</h5>
           <div class="mb-3">
-            <label for="jenis-produk" class="form-label" style="color:#64bcf4">Jenis Produk</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Pilih jenis produk</option>
-              <option value="warna">Print Warna</option>
-              <option value="hitam-putih">Print Hitam Putih</option>
-              <option value="foto">Print Foto</option>
-            </select>
+            <label for="alamat" class="form-label" style="color:#64bcf4">Alamat</label>
+            <textarea class="form-control" name="alamat" id="alamat" rows="5"></textarea>
           </div>
           <div class="row mb-3">
             <div class="col">
-              <label for="ukuran-kertas" class="form-label" style="color:#64bcf4">Pilih Ukuran Kertas</label>
+              <label for="kode_pos" class="form-label" style="color:#64bcf4">Kode Pos</label>
+              <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos">
+            </div>
+            <div class="col"></div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <label for="provinsi" class="form-label" style="color:#64bcf4">Provinsi</label>
               <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih ukuran kertas</option>
-                <option value="A4">Kertas A4</option>
-                <option value="F4">Kertas F4</option>
-                <option value="Legal">Kertas Legal</option>
-                <option value="A3">Kertas A3</option>
+                <option selected>Pilih Provinsi</option>
               </select>
             </div>
             <div class="col">
-              <label for="jumlah-halaman" class="form-label" style="color:#64bcf4">Pilih Jumlah Halaman</label>
+              <label for="kabupaten-kota" class="form-label" style="color:#64bcf4">Kabupaten/Kota</label>
               <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih jumlah halaman</option>
-                <option value="1">1 Halaman</option>
-                <option value="2">2 Halaman</option>
-                <option value="3">3 Halaman</option>
-                <option value="4">4 Halaman</option>
-                <option value="5">5 Halaman</option>
+                <option selected>Pilih Kabupaten/Kota</option>
               </select>
             </div>
           </div>
-          <div class="row mb-5">
+          <div class="row mb-3">
             <div class="col">
-              <label for="jumlah-order" class="form-label" style="color:#64bcf4">Pilih Jumlah Order</label>
+              <label for="kecamatan" class="form-label" style="color:#64bcf4">Kecamatan</label>
               <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih jumlah order</option>
-                <option value="1-kali">Print 1 Kali</option>
-                <option value="2-kali">Print 2 Kali</option>
-                <option value="3-kali">Print 3 Kali</option>
+                <option selected>Pilih Kecamatan</option>
               </select>
             </div>
-            <div class="col">
-              <label for="opsi-print" class="form-label" style="color:#64bcf4">Pilih Opsi Print</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih opsi print</option>
-                <option value="satu-sisi">Print Satu Sisi</option>
-                <option value="bolak-balik">Print Bolak Balik</option>
-              </select>
+            <div class="col"></div>
+          </div>
+          <h5 style="color: #64bcf4;" class="mt-5 mb-3">Nomor Telepon Pemesan</h5>
+          <div class="row g-3 mb-3">
+            <label for="nomor_telepon" class="form-label" style="color:#64bcf4">Nomor Telepon</label>
+            <div class="input-group col-sm">
+              <span class="input-group-text">+62</span>
+              <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telepon">
             </div>
+            <div class="col"></div>
           </div>
         </div>
         
-        <div class="container">
-          <h5 style="color: #64bcf4;" class="mb-3">Metode Pembayaran</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radio" id="cod" value="cod" checked>
-            <label class="form-check-label" for="cod">
-              Cash On Delivery
-            </label>
-          </div>
-          <div class="form-check mb-5">
-            <input class="form-check-input" type="radio" name="radio" id="transfer" value="transfer">
-            <label class="form-check-label" for="transfer">
-              Transfer Bank
-            </label>
-          </div>
+        <div class="container mt-5">
+          <h5 style="color: #64bcf4;" class="mb-3">Ongkos Kirim</h5>
+          
         </div>
 
-        <div class="container d-flex justify-content-center gap align-items-baseline light my-5">
-          <a href="pengiriman.php" class="button text-center" style="width: 100%;">Lanjutkan</a>
+        <div class="container d-flex justify-content-between light my-5">
+          <a href="order.php" class="button secondary text-center" style="width: 25%;">
+            <i class="fa-solid fa-arrow-left pe-2" style="color: #64bcf4"></i>
+            Kembali
+          </a>
+          <a href="konfirmasi.php" class="button text-center" style="width: 25%;">
+            Lanjutkan
+            <i class="fa-solid fa-arrow-right ps-2" style="color: #fff"></i>
+          </a>
         </div>
       </form>
     </div>
