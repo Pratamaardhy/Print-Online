@@ -48,7 +48,7 @@ if(! isset($_SESSION['is_login']))
                 <a class="nav-link" href="#biaya">Biaya</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#pembayaran">Pembayaran</a>
+                <a class="nav-link" href="#pembayaran">Metode Pembayaran</a>
               </li>
             </ul>
           </div>
@@ -168,7 +168,7 @@ if(! isset($_SESSION['is_login']))
 
       <div class="container text-center my-5" id="pembayaran">
         <h3 class="mb-5">
-          Pembayaran
+          Metode Pembayaran
         </h3>
         <div class="row">
           <div class="col">
@@ -208,7 +208,7 @@ if(! isset($_SESSION['is_login']))
             <li><a href="#" class="mb-2" style="margin-left: 0;">Home</a></li>
             <li><a href="#layanan-kami" class="mb-2" style="margin-left: 0;">Layanan Kami</a></li>
             <li><a href="#biaya" class="mb-2" style="margin-left: 0;">Biaya</a></li>
-            <li><a href="#pembayaran" class="mb-2" style="margin-left: 0;">Pembayaran</a></li>
+            <li><a href="#pembayaran" class="mb-2" style="margin-left: 0;">Metode Pembayaran</a></li>
           </ul>
         </div>
       </div>

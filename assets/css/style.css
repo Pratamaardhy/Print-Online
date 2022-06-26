@@ -237,3 +237,12 @@ tbody tr:last-of-type {
 footer {
   background-color: #64bcf4 !important;
 }
+
+.tbl-kecil {
+  font-weight: bold;
+  width: 300px;
+}
+
+.tbl-titik {
+  width: 10px;
+}
