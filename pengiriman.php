@@ -5,6 +5,20 @@ if(! isset($_SESSION['is_login']))
   header('location:login.php');
 }
 
+/*if(isset($_POST['button-pengiriman']))
+{
+  $alamat = $_POST['alamat_pelanggan'];
+  $provinsi = $_POST['nama_provinsi'];
+  $kabupaten_kota = $_POST['nama_kabkota'];
+  $jenis_ekspedisi = $_POST['nama_ekspedisi'];
+  $jenis_paket = $_POST['nama_paket'];
+  $berat_paket = $_POST['total_berat'];
+  $ongkir = $_POST['ongkir'];
+  $estimasi = $_POST['estimasi'];
+  $no_telp = $_POST['telp_pelanggan'];
+}
+*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,58 +78,71 @@ if(! isset($_SESSION['is_login']))
         <h3 class="mb-5">Opsi Pengiriman</h3>
       </div>
 
-      <div class="container">
-        <h5 style="color: #64bcf4;" class="mb-3">Opsi Kurir</h5>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="radio" id="kurir-cod" value="kurir-cod" checked>
-          <label class="form-check-label" for="kurir-cod">
-            Kurir COD
-          </label>
-        </div>
-        <div class="form-check mb-5">
-          <input class="form-check-input" type="radio" name="radio" id="kurir-reguler" value="kurir-reguler">
-          <label class="form-check-label" for="kurir-reguler">
-            Kurir Reguler
-          </label>
-        </div>
-      </div>
-      
       <form method="post" action="">
         <div class="container">
-          <h5 style="color: #64bcf4;" class="mb-3">Alamat Rumah</h5>
+          <h5 style="color: #64bcf4;" class="mb-3">Alamat Pelanggan</h5>
           <div class="mb-3">
-            <label for="alamat" class="form-label" style="color:#64bcf4">Alamat</label>
-            <textarea class="form-control" name="alamat" id="alamat" rows="5"></textarea>
-          </div>
-          <div class="row mb-3">
-            <div class="col">
-              <label for="kode_pos" class="form-label" style="color:#64bcf4">Kode Pos</label>
-              <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos">
-            </div>
-            <div class="col"></div>
+            <label for="alamat" class="form-label" style="color:#64bcf4">Alamat Lengkap</label>
+            <textarea class="form-control" name="alamat" id="alamat" rows="5" placeholder="Alamat Lengkap (RT, RW, Kelurahan, Kecamatan, Kode Pos)"></textarea>
+            <textarea class="form-control mt-2" name="alamat_pelanggan" rows="5" readonly></textarea>
           </div>
           <div class="row mb-3">
             <div class="col">
               <label for="provinsi" class="form-label" style="color:#64bcf4">Provinsi</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih Provinsi</option>
+              <select class="form-select" aria-label="Default select example" name="provinsi">
+
               </select>
+              <input type="text" class="form-control mt-2" name="nama_provinsi" readonly>
             </div>
             <div class="col">
               <label for="kabupaten-kota" class="form-label" style="color:#64bcf4">Kabupaten/Kota</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih Kabupaten/Kota</option>
+              <select class="form-select" aria-label="Default select example" name="kabupaten-kota">
+
               </select>
+              <input type="text" class="form-control mt-2" name="nama_kabkota" readonly>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
-              <label for="kecamatan" class="form-label" style="color:#64bcf4">Kecamatan</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih Kecamatan</option>
+              <label for="jenis-ekspedisi" class="form-label" style="color:#64bcf4">Jenis Ekspedisi</label>
+              <select class="form-select" aria-label="Default select example" name="tipe-ekspedisi">
+                <option value="" selected>Pilih Ekspedisi</option>
+                <option value="jne">JNE</option>
+                <option value="pos">POS INDONESIA</option>
               </select>
+              <input type="text" class="form-control mt-2" name="nama_ekspedisi" readonly>
             </div>
-            <div class="col"></div>
+            <div class="col">
+              <label for="jenis-paket" class="form-label" style="color:#64bcf4">Jenis Paket</label>
+              <select class="form-select" aria-label="Default select example" name="jenis-paket">
+
+              </select>
+              <input type="text" class="form-control mt-2" name="nama_paket" readonly>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <label for="total_berat" class="form-label" style="color:#64bcf4">Berat Paket</label>
+              <input type="text" class="form-control" name="total_berat" value="1000" readonly>
+            </div>
+            <div class="col">
+              <br>
+              <br>
+              <p> atau 1 Kg</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <label for="ongkir" class="form-label" style="color:#64bcf4">Ongkos Kirim</label>
+              <div class="input-group col-sm">
+                <span class="input-group-text">Rp.</span>
+                <input type="text" class="form-control" name="ongkir" readonly>
+              </div>
+            </div>
+            <div class="col">
+              <label for="estimasi" class="form-label" style="color: #64bcf4;">Estimasi Pengiriman</label>
+              <input type="text" class="form-control" name="estimasi" readonly>
+            </div>
           </div>
           <h5 style="color: #64bcf4;" class="mt-5 mb-3">Nomor Telepon Pemesan</h5>
           <div class="row g-3 mb-3">
@@ -124,13 +151,11 @@ if(! isset($_SESSION['is_login']))
               <span class="input-group-text">+62</span>
               <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telepon">
             </div>
-            <div class="col"></div>
+            <div class="input-group col-sm">
+              <span class="input-group-text">+62</span>
+              <input type="text" class="form-control" name="telp_pelanggan" readonly>
+            </div>
           </div>
-        </div>
-        
-        <div class="container mt-5">
-          <h5 style="color: #64bcf4;" class="mb-3">Ongkos Kirim</h5>
-          
         </div>
 
         <div class="container d-flex justify-content-between light my-5">
@@ -138,10 +163,10 @@ if(! isset($_SESSION['is_login']))
             <i class="fa-solid fa-arrow-left pe-2" style="color: #64bcf4"></i>
             Kembali
           </a>
-          <a href="konfirmasi.php" class="button text-center" style="width: 25%;">
+          <button type="submit" class="button text-center" name="button-pengiriman" style="width: 25%;">
             Lanjutkan
             <i class="fa-solid fa-arrow-right ps-2" style="color: #fff"></i>
-          </a>
+          </button>
         </div>
       </form>
     </div>
@@ -156,6 +181,77 @@ if(! isset($_SESSION['is_login']))
   <!-- JavaScript Files -->
 
   <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('textarea').on('keyup', function () {
+        var textarea = $(this).val();
+        var textarea_length = textarea.length;
+        $('#textarea_length').text(textarea_length);
+        $("textarea[name='alamat_pelanggan']").val(textarea);
+      });
+
+      $.ajax({
+        type: "post",
+        url: 'data_provinsi.php',
+        success: function (hasil_provinsi)
+        {
+          $('select[name="provinsi"]').html(hasil_provinsi);
+        }
+      });
+    
+      $("select[name='provinsi']").change(function () {
+        var id_provinsi_terpilih = $("option:selected", this).attr("id_provinsi");
+        var prov = $("option:selected", this).attr("nama_prov");
+        $.ajax({
+          type: "post",
+          url: 'data_kabkota.php',
+          data: 'id_provinsi=' + id_provinsi_terpilih,
+          success: function (hasil_kabupaten)
+          {
+            $('select[name="kabupaten-kota"]').html(hasil_kabupaten);
+          }
+        });
+        $("input[name='nama_provinsi']").val(prov);
+      });
+
+      $("select[name='tipe-ekspedisi']").on("change", function () {
+        var tipe_ekspedisi_terpilih = $("select[name='tipe-ekspedisi'] option:selected").val();
+        var kabupaten_kota_terpilih = $("option:selected", $("select[name='kabupaten-kota']")).attr("id_kabkota");
+        var total_berat = $("input[name='total_berat']").val();
+        $.ajax({
+          type: "post",
+          url: 'data_paket.php',
+          data: 'tipe_ekspedisi=' + tipe_ekspedisi_terpilih + '&kabupaten_kota=' + kabupaten_kota_terpilih + '&total_berat=' + total_berat,
+          success: function (hasil_paket)
+          {
+            $('select[name="jenis-paket"]').html(hasil_paket);
+          }
+        });
+        $("input[name='nama_ekspedisi']").val(tipe_ekspedisi_terpilih);
+      });
+
+      $("select[name='jenis-paket']").on("change", function () {
+        var ongkos = $("option:selected", this).attr("ongkir");
+        var jenis_paket = $("option:selected", this).attr("paket");
+        var estimasi = $("option:selected", this).attr("estimasi");
+        $("input[name='ongkir']").val(ongkos);
+        $("input[name='nama_paket']").val(jenis_paket);
+        $("input[name='estimasi']").val(estimasi + " hari");
+      });
+
+      $("select[name='kabupaten-kota']").on("change", function () {
+        var tipe_kabkot = $("option:selected", this).attr("tipe");
+        var kabkot = $("option:selected", this).attr("kab_kota");
+        $("input[name='nama_kabkota']").val(tipe_kabkot + " " + kabkot);
+      });
+
+      $("input[name='nomor_telepon']").on("keyup", function () {
+        var nomor_telepon = $("input[name='nomor_telepon']").val();
+        $("input[name='telp_pelanggan']").val(nomor_telepon);
+      });
+    });
+  </script>
 </body>
 
 </html>
