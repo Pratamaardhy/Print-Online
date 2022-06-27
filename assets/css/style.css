@@ -246,3 +246,9 @@ footer {
 .tbl-titik {
   width: 10px;
 }
+
+.accordion-button:not(collapsed) {
+  font-weight: bold;
+  background-color: #fff!important;
+  color: #64bcf4!important;
+}
