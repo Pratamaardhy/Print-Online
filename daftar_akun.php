@@ -69,19 +69,17 @@ if(! isset($_SESSION['is_login_admin']))
           <html>
           <div class="alert alert-success container mt-3" role="alert">
             <i data-feather="x" onclick="this.parentElement.style.display='none';" style="color: #fff;" width="20"></i>
-            Data Tarawih berhasil di-update
+            Akun Pengguna berhasil dihapus
           </div>
           </html>
         OK;
 
         $gagal = <<<ERR
           <html>
-          <body>
-            <div class="alert alert-danger" role="alert">
-              <span class="close" onclick="this.parentElement.style.display='none';">&times;</span>
-              Data Tarawih gagal di-update
-            </div>
-          </body>
+          <div class="alert alert-danger container mt-3" role="alert">
+            <i data-feather="x" onclick="this.parentElement.style.display='none';" style="color: #fff;" width="20"></i>
+            Akun Pengguna gagal dihapus
+          </div>
           </html>
         ERR;
 
