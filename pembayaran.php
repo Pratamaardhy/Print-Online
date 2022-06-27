@@ -6,6 +6,7 @@ if(! isset($_SESSION['is_login']))
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,11 +60,11 @@ if(! isset($_SESSION['is_login']))
   </nav>
 
   <main class="light big-wrapper">
-    <div id="konfirmasi" class="container py-3">
+    <div id="pembayaran" class="container py-3">
       <div class="container text-center py-3">
-        <i class="fa-solid fa-circle-check fa-5x my-3" style="color: #64bcf4"></i>
-        <h3 class="mb-3">Konfirmasi Order</h3>
-        <p>Silahkan periksa kembali pesanan anda, sebelum lanjut ke proses pembayaran.</p>
+        <i class="fa-solid fa-cash-register fa-5x my-3" style="color: #64bcf4"></i>
+        <h3 class="mb-3">Pembayaran</h3>
+        <p>Silahkan lakukan pembayaran dengan metode pembayaran yang tersedia.</p>
         <h5>Nomor pesanan: P20220626001</h5>
       </div>
       <div class="container">
@@ -71,54 +72,13 @@ if(! isset($_SESSION['is_login']))
           <div class="col">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Detail Pesanan</h5>
+                <h5 class="card-title">Detail Pembayaran</h5>
                 <p class="card-text">
                   <table class="table table-borderless">
                     <tbody>
-                      <tr>
-                        <td class="tbl-kecil">Nama Pembeli</td>
-                        <td class="tbl-titik">:</td>
-                        <td>Rizky</td>
-                      </tr>
-                      <tr>
                         <td class="tbl-kecil">Nomor Pesanan</td>
                         <td class="tbl-titik">:</td>
                         <td>P20220626001</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil">Alamat Pengiriman</td>
-                        <td class="tbl-titik">:</td>
-                        <td>Jalan Raya Taman No. 15 Kel. Taman, Kec. Taman, Kab. Sidoarjo Jawa Timur 61257</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil">Opsi Kurir</td>
-                        <td class="tbl-titik">:</td>
-                        <td>Kurir COD</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil">Jenis Produk</td>
-                        <td class="tbl-titik">:</td>
-                        <td>Print Warna</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil">Ukuran Kertas</td>
-                        <td class="tbl-titik">:</td>
-                        <td>A4</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil">Jumlah Halaman</td>
-                        <td class="tbl-titik">:</td>
-                        <td>3 Halaman</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil">Jumlah Order</td>
-                        <td class="tbl-titik">:</td>
-                        <td>Print 1 Kali</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil">Opsi Print</td>
-                        <td class="tbl-titik">:</td>
-                        <td>Print Satu Sisi</td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Metode Pembayaran</td>
@@ -138,7 +98,7 @@ if(! isset($_SESSION['is_login']))
                       <tr>
                         <td class="tbl-kecil">Total Biaya</td>
                         <td class="tbl-titik">:</td>
-                        <td>Rp. 11.500</td>
+                        <td style="font-weight: bold;">Rp. 11.500</td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil"></td>
@@ -153,16 +113,78 @@ if(! isset($_SESSION['is_login']))
           </div>
         </div>
       </div>
-      <div class="container d-flex justify-content-between light my-5">
-        <a href="pengiriman.php" class="button secondary text-center" style="width: 25%;">
-          <i class="fa-solid fa-arrow-left pe-2" style="color: #64bcf4"></i>
-          Kembali
-        </a>
-        <a href="pembayaran.php" class="button text-center" style="width: 25%;">
-          Lanjutkan Ke Pembayaran
-          <i class="fa-solid fa-arrow-right ps-2" style="color: #fff"></i>
-        </a>
+      <div class="container pt-5">
+        <h5>Total Biaya Yang Harus Anda Bayarkan:</h5>
+        <h3>Rp. 11.500</h3>
       </div>
+      <div class="container pt-5">
+        <h5 class="mb-3">Transfer Bank</h5>
+        <div class="accordion" id="transfer">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-transfer-1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panel-transfer-1" aria-expanded="true" aria-controls="panel-transfer-1">
+                BANK BCA
+              </button>
+            </h2>
+            <div id="panel-transfer-1" class="accordion-collapse collapse show" aria-labelledby="heading-transfer-1" data-bs-parent="#transfer">
+              <div class="accordion-body">
+                <table class="table table-borderless">
+                  <tbody>
+                      <td class="tbl-kecil">Nomor Rekening</td>
+                      <td class="tbl-titik">:</td>
+                      <td>2000919200882</td>
+                    </tr>
+                    <tr>
+                      <td class="tbl-kecil">Atas Nama</td>
+                      <td class="tbl-titik">:</td>
+                      <td>PT Print Online Indonesia</td>
+                    </tr>
+                    <tr>
+                      <td class="tbl-kecil">Nominal Transfer</td>
+                      <td class="tbl-titik">:</td>
+                      <td>Rp. 11.500</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-transfer-2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panel-transfer-2" aria-expanded="false" aria-controls="panel-transfer-2">
+                BANK BRI
+              </button>
+            </h2>
+            <div id="panel-transfer-2" class="accordion-collapse collapse" aria-labelledby="heading-transfer-2" data-bs-parent="#transfer">
+              <div class="accordion-body">
+                <table class="table table-borderless">
+                  <tbody>
+                      <td class="tbl-kecil">Nomor Rekening</td>
+                      <td class="tbl-titik">:</td>
+                      <td>35111000200488</td>
+                    </tr>
+                    <tr>
+                      <td class="tbl-kecil">Atas Nama</td>
+                      <td class="tbl-titik">:</td>
+                      <td>PT Print Online Indonesia</td>
+                    </tr>
+                    <tr>
+                      <td class="tbl-kecil">Nominal Transfer</td>
+                      <td class="tbl-titik">:</td>
+                      <td>Rp. 11.500</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container d-flex justify-content-center gap align-items-baseline light my-5">
+        <a href="#" class="button text-center" style="width: 100%;">Saya Sudah Transfer</a>
+      </div>
+      <p class="text-center" style="font-size: 14px;">Terima kasih telah berbelanja di Print Online!</p>
+    </div>
   </main>
 
   <footer class="footer mt-auto py-3">
@@ -170,4 +192,6 @@ if(! isset($_SESSION['is_login']))
       <span class="text-white">Jasa Print Online - 2022</span>
     </div>
   </footer>
+
+  <script src="assets/js/bootstrap.min.js"></script>
 </body>
