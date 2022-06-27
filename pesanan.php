@@ -86,7 +86,54 @@ if(! isset($_SESSION['is_login_admin']))
         <div class="page-title">
           <h3 class="mb-3">Daftar Pesanan</h3>
         </div>
-        
+        <body>
+  <table style="width:100%";>
+    <caption>STATISTIK ORDERAN ( Seminggu Terakhir )</caption>
+     <thead>
+        <tr>
+          <th>Tanggal</th>
+          <th>Order</th>
+          <th>Total</th>
+        </tr>
+     </thead>
+        <tbody>
+<?php
+$konek = mysqli_connect("localhost","root","","(db kita)");
+
+$tgl_skrg = date("Ymd"); // dapatkan tanggal sekarang saat online
+// $tgl_skrg = date("Y-m-d"); // untuk simulasi saja sesuai dengan di database
+
+// dapatkan 6 hari sblm tgl sekarang 
+$seminggu = strtotime("-1 week +1 day",strtotime($tgl_skrg));
+$hasilnya = date("Y-m-d", $seminggu);
+
+//lakukan looping sebanyak 6 kali   
+for ($i=0; $i<=6; $i++){
+  $urutan_tgl   = strtotime("+$i day",strtotime($hasilnya));
+  $hasil_urutan = date("d-M-Y", $urutan_tgl);
+    
+  $tgl_order   = strtotime("+$i day",strtotime($hasilnya));
+  $hasil_order = date("Y-m-d", $tgl_order);
+  $query_order = mysqli_num_rows(mysqli_query($konek, "SELECT * FROM (nama tabel kita) WHERE tanggal='$hasil_order'"));
+   
+  $tgl_total   = strtotime("+$i day",strtotime($hasilnya));
+  $hasil_total = date("Y-m-d", $tgl_total);
+  $query_total = mysqli_fetch_array(mysqli_query($konek, "SELECT SUM(total) as hitstoday FROM (nama tabel kita) WHERE tanggal='$hasil_total'"));
+    
+  $total_today = $query_total['totaltoday'];
+    
+  if ($total_today==""){ $total_today="0"; }
+      
+  echo "<tr>
+        <td>$hasil_urutan</td>
+        <td>$query_pengujung</td>
+        <td>$total_today</td>
+        </tr>";    
+}
+?> 
+      </tbody>
+    </table>
+
       </div>
 
       <footer>
