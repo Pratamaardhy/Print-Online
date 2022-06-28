@@ -63,83 +63,118 @@ if(! isset($_SESSION['is_login']))
         <i class="fa-solid fa-cart-plus fa-5x my-3" style="color: #64bcf4"></i>
         <h3 class="mb-5">Form Order</h3>
       </div>
-      
-      <form method="post" action="">
+
+      <form method="post" action="" class="was-validated">
         <div class="container">
           <h5 style="color: #64bcf4;" class="mb-3">Rincian Produk</h5>
           <div class="mb-3">
             <label for="jenis-produk" class="form-label" style="color:#64bcf4">Jenis Produk</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Pilih jenis produk</option>
-              <option value="warna">Print Warna</option>
-              <option value="hitam-putih">Print Hitam Putih</option>
-              <option value="foto">Print Foto</option>
+            <select class="form-select" aria-label="Default select example" name="id_jp" required>
+              <option value="">Jenis Produk</option>
+              <?php
+                include "connect.php";
+                $query = mysqli_query($connect, "SELECT * FROM tb_jenisproduk") or die (mysqli_error($connect));
+                while($data = mysqli_fetch_array($query))
+                {
+                echo"<option value=$data[id_jp]> $data[jenis_produk] </option>";
+                }
+              ?>
             </select>
+            <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
           </div>
           <div class="row mb-3">
             <div class="col">
               <label for="ukuran-kertas" class="form-label" style="color:#64bcf4">Pilih Ukuran Kertas</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih ukuran kertas</option>
-                <option value="A4">Kertas A4</option>
-                <option value="F4">Kertas F4</option>
-                <option value="Legal">Kertas Legal</option>
-                <option value="A3">Kertas A3</option>
+              <select class="form-select" aria-label="Default select example" name="id_uk" required>
+                <option value="">Pilih Ukuran Kertas</option>
+                <?php
+                  include "connect.php";
+                  $query = mysqli_query($connect, "SELECT * FROM tb_ukurankertas") or die (mysqli_error($connect));
+                  while($data = mysqli_fetch_array($query)){
+                    echo"<option value=$data[id_uk]> $data[ukuran_kertas] </option>";
+                  }
+                ?>
               </select>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
+
             <div class="col">
               <label for="jumlah-halaman" class="form-label" style="color:#64bcf4">Pilih Jumlah Halaman</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih jumlah halaman</option>
-                <option value="1">1 Halaman</option>
-                <option value="2">2 Halaman</option>
-                <option value="3">3 Halaman</option>
-                <option value="4">4 Halaman</option>
-                <option value="5">5 Halaman</option>
-              </select>
+              <input type="text" class="form-control" aria-label="default select example" name="jumlah_halaman" placeholder="1 (Halaman)" required>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
           </div>
           <div class="row mb-5">
             <div class="col">
               <label for="jumlah-order" class="form-label" style="color:#64bcf4">Pilih Jumlah Order</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih jumlah order</option>
-                <option value="1-kali">Print 1 Kali</option>
-                <option value="2-kali">Print 2 Kali</option>
-                <option value="3-kali">Print 3 Kali</option>
+              <select class="form-select" aria-label="Default select example" name="id_jo" required>
+                <option value="">Pilih Jumlah Order</option>
+                <?php
+                  include "connect.php";
+                  $query = mysqli_query($connect, "SELECT * FROM tb_jumlahorder") or die (mysqli_error($connect));
+                  while($data = mysqli_fetch_array($query)){
+                    echo"<option value=$data[id_jo]> $data[jml_order] </option>";
+                  }
+                ?>
               </select>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
             <div class="col">
               <label for="opsi-print" class="form-label" style="color:#64bcf4">Pilih Opsi Print</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Pilih opsi print</option>
-                <option value="satu-sisi">Print Satu Sisi</option>
-                <option value="bolak-balik">Print Bolak Balik</option>
+              <select class="form-select" aria-label="Default select example" name="id_op" required>
+                <option value="">Pilih Opsi Print</option>
+                <?php
+                  include "connect.php";
+                  $query = mysqli_query($connect, "SELECT * FROM tb_opsiprint") or die (mysqli_error($connect));
+                  while($data = mysqli_fetch_array($query)){
+                    echo"<option value=$data[id_op]> $data[ops_print] </option>";
+                  }
+                ?>
               </select>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
           </div>
         </div>
-        
-        <div class="container">
-          <h5 style="color: #64bcf4;" class="mb-3">Metode Pembayaran</h5>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="radio" id="cod" value="cod" checked>
-            <label class="form-check-label" for="cod">
-              Cash On Delivery
-            </label>
-          </div>
-          <div class="form-check mb-5">
-            <input class="form-check-input" type="radio" name="radio" id="transfer" value="transfer">
-            <label class="form-check-label" for="transfer">
-              Transfer Bank
-            </label>
-          </div>
-        </div>
 
-        <div class="container d-flex justify-content-center gap align-items-baseline light my-5">
-          <a href="pengiriman.php" class="button text-center" style="width: 100%;">Lanjutkan</a>
+        <div class="container">
+
+          <label for="metode-pembayaran" class="form-label" style="color:#64bcf4">Metode Pembayaran</label>
+          <select class="form-select" aria-label="Default select example" name="id_mp" required>
+            <option value="">Pilih opsi print</option>
+            <?php
+                    include "connect.php";
+                    $query = mysqli_query($connect, "SELECT * FROM tb_pembayaran") or die (mysqli_error($connect));
+                    while($data = mysqli_fetch_array($query)){
+                      echo"<option value=$data[id_mp]> $data[metode_pembayaran] </option>";
+                    }
+                  ?>
+          </select>
+          <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
         </div>
-      </form>
+    </div>
+
+    <div class="container d-flex justify-content-center gap align-items-baseline light my-5">
+      <button class="button" type="submit" value="Submit" name="proses" style="width: 100%;">Submit</button>
+    </div>
+    </form>
+    <?php
+        
+        if(isset($_POST['proses'])){
+
+          mysqli_query($connect, "insert into tb_order set
+          id_jp = '$_POST[id_jp]',
+          id_uk = '$_POST[id_uk]',
+          jumlah_halaman = '$_POST[jumlah_halaman]',
+          id_jo = '$_POST[id_jo]',
+          id_op = '$_POST[id_op]',
+          id_mp = '$_POST[id_mp]'")
+          or die(mysqli_error($connect));
+
+          echo "<script>alert('Data telah tersimpan')</script>";
+          echo "<script>location.href='pengiriman.php'</script>";
+        }
+
+        ?>
     </div>
   </main>
 
