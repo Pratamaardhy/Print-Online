@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2022 at 05:03 PM
+-- Generation Time: Jun 29, 2022 at 05:44 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_jenisproduk` (
-  `id_jp` int(3) NOT NULL,
+  `id_jp` int(11) NOT NULL,
   `jenis_produk` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -48,7 +48,7 @@ INSERT INTO `tb_jenisproduk` (`id_jp`, `jenis_produk`) VALUES
 --
 
 CREATE TABLE `tb_jumlahorder` (
-  `id_jo` int(3) NOT NULL,
+  `id_jo` int(11) NOT NULL,
   `jml_order` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -68,7 +68,7 @@ INSERT INTO `tb_jumlahorder` (`id_jo`, `jml_order`) VALUES
 --
 
 CREATE TABLE `tb_opsiprint` (
-  `id_op` int(3) NOT NULL,
+  `id_op` int(11) NOT NULL,
   `ops_print` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,28 +93,31 @@ CREATE TABLE `tb_order` (
   `jumlah_halaman` int(3) NOT NULL,
   `id_jo` int(3) NOT NULL,
   `id_op` int(3) NOT NULL,
-  `id_mp` int(3) NOT NULL
+  `id_mp` int(3) NOT NULL,
+  `link_dokumen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_order`
 --
 
-INSERT INTO `tb_order` (`id_order`, `id_jp`, `id_uk`, `jumlah_halaman`, `id_jo`, `id_op`, `id_mp`) VALUES
-(1, 1, 2, 0, 1, 2, 0),
-(2, 1, 2, 4, 1, 2, 0),
-(3, 1, 2, 4, 1, 2, 0),
-(4, 1, 2, 4, 1, 2, 0),
-(5, 3, 1, 5, 1, 1, 2),
-(6, 1, 1, 1, 1, 1, 1),
-(7, 1, 1, 1, 1, 1, 1),
-(8, 1, 1, 1, 1, 1, 1),
-(9, 1, 1, 1, 1, 1, 1),
-(10, 0, 0, 0, 0, 0, 0),
-(11, 0, 0, 1, 0, 0, 0),
-(12, 1, 1, 3, 1, 1, 1),
-(13, 1, 1, 1, 1, 1, 1),
-(14, 1, 1, 1, 1, 1, 1);
+INSERT INTO `tb_order` (`id_order`, `id_jp`, `id_uk`, `jumlah_halaman`, `id_jo`, `id_op`, `id_mp`, `link_dokumen`) VALUES
+(1, 1, 2, 0, 1, 2, 0, ''),
+(2, 1, 2, 4, 1, 2, 0, ''),
+(3, 1, 2, 4, 1, 2, 0, ''),
+(4, 1, 2, 4, 1, 2, 0, ''),
+(5, 3, 1, 5, 1, 1, 2, ''),
+(6, 1, 1, 1, 1, 1, 1, ''),
+(7, 1, 1, 1, 1, 1, 1, ''),
+(8, 1, 1, 1, 1, 1, 1, ''),
+(9, 1, 1, 1, 1, 1, 1, ''),
+(10, 0, 0, 0, 0, 0, 0, ''),
+(11, 0, 0, 1, 0, 0, 0, ''),
+(12, 1, 1, 3, 1, 1, 1, ''),
+(13, 1, 1, 1, 1, 1, 1, ''),
+(14, 1, 1, 1, 1, 1, 1, ''),
+(15, 1, 1, 1, 1, 1, 1, ''),
+(16, 1, 1, 1, 1, 1, 1, 'https://drive.google.com/file/d/1IiTqASGESgM8ByI7N1t-bRXMzQU2penr/view?usp=drivesdk');
 
 -- --------------------------------------------------------
 
@@ -123,7 +126,7 @@ INSERT INTO `tb_order` (`id_order`, `id_jp`, `id_uk`, `jumlah_halaman`, `id_jo`,
 --
 
 CREATE TABLE `tb_pembayaran` (
-  `id_mp` int(3) NOT NULL,
+  `id_mp` int(11) NOT NULL,
   `metode_pembayaran` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -133,7 +136,7 @@ CREATE TABLE `tb_pembayaran` (
 
 INSERT INTO `tb_pembayaran` (`id_mp`, `metode_pembayaran`) VALUES
 (1, 'Cash On Delivery'),
-(2, 'Transfer BAnk');
+(2, 'Transfer Bank');
 
 -- --------------------------------------------------------
 
@@ -161,7 +164,8 @@ CREATE TABLE `tb_pengiriman` (
 INSERT INTO `tb_pengiriman` (`id`, `alamat`, `provinsi`, `kota`, `ekspedisi`, `paket`, `berat`, `ongkir`, `estimasi`, `nohp`) VALUES
 (10, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Jawa Timur', 'Kabupaten Sidoarjo', 'jne', 'YES', '1000', '10000', '1-1 hari', '082244026525'),
 (11, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Jawa Timur', 'Kota Madiun', 'jne', 'OKE', '1000', '7000', '2-3 hari', '082244026525'),
-(12, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Jawa Timur', 'Kabupaten Bondowoso', 'jne', 'OKE', '1000', '7000', '2-3 hari', '082244026525');
+(12, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Jawa Timur', 'Kabupaten Bondowoso', 'jne', 'OKE', '1000', '7000', '2-3 hari', '082244026525'),
+(13, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Kalimantan Utara', 'Kabupaten Malinau', 'jne', 'OKE', '1000', '63000', '5-7 hari', '082244026525');
 
 -- --------------------------------------------------------
 
@@ -182,7 +186,7 @@ CREATE TABLE `tb_transaksi` (
 --
 
 CREATE TABLE `tb_ukurankertas` (
-  `id_uk` int(3) NOT NULL,
+  `id_uk` int(11) NOT NULL,
   `ukuran_kertas` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -225,10 +229,34 @@ INSERT INTO `tb_user` (`id`, `username`, `password`, `nama`, `level`) VALUES
 --
 
 --
+-- Indexes for table `tb_jenisproduk`
+--
+ALTER TABLE `tb_jenisproduk`
+  ADD PRIMARY KEY (`id_jp`);
+
+--
+-- Indexes for table `tb_jumlahorder`
+--
+ALTER TABLE `tb_jumlahorder`
+  ADD PRIMARY KEY (`id_jo`);
+
+--
+-- Indexes for table `tb_opsiprint`
+--
+ALTER TABLE `tb_opsiprint`
+  ADD PRIMARY KEY (`id_op`);
+
+--
 -- Indexes for table `tb_order`
 --
 ALTER TABLE `tb_order`
   ADD PRIMARY KEY (`id_order`);
+
+--
+-- Indexes for table `tb_pembayaran`
+--
+ALTER TABLE `tb_pembayaran`
+  ADD PRIMARY KEY (`id_mp`);
 
 --
 -- Indexes for table `tb_pengiriman`
@@ -245,6 +273,12 @@ ALTER TABLE `tb_transaksi`
   ADD KEY `id_pengiriman` (`id_pengiriman`);
 
 --
+-- Indexes for table `tb_ukurankertas`
+--
+ALTER TABLE `tb_ukurankertas`
+  ADD PRIMARY KEY (`id_uk`);
+
+--
 -- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
@@ -255,22 +289,52 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_jenisproduk`
+--
+ALTER TABLE `tb_jenisproduk`
+  MODIFY `id_jp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tb_jumlahorder`
+--
+ALTER TABLE `tb_jumlahorder`
+  MODIFY `id_jo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tb_opsiprint`
+--
+ALTER TABLE `tb_opsiprint`
+  MODIFY `id_op` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `id_order` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_order` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tb_pembayaran`
+--
+ALTER TABLE `tb_pembayaran`
+  MODIFY `id_mp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_pengiriman`
 --
 ALTER TABLE `tb_pengiriman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_ukurankertas`
+--
+ALTER TABLE `tb_ukurankertas`
+  MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_user`

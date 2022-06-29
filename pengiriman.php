@@ -87,45 +87,50 @@ if(! isset($_SESSION['is_login']))
         <h3 class="mb-5">Opsi Pengiriman</h3>
       </div>
 
-      <form method="post" action="">
+      <form method="post" action="" class="was-validated">
         <div class="container">
           <h5 style="color: #64bcf4;" class="mb-3">Alamat Pelanggan</h5>
           <div class="mb-3">
             <label for="alamat" class="form-label" style="color:#64bcf4">Alamat Lengkap</label>
-            <textarea class="form-control" name="alamat" id="alamat" rows="5" placeholder="Alamat Lengkap (RT, RW, Kelurahan, Kecamatan, Kode Pos)"></textarea>
+            <textarea class="form-control" name="alamat" id="alamat" rows="5" placeholder="Alamat Lengkap (RT, RW, Kelurahan, Kecamatan, Kode Pos)" required></textarea>
+            <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             <textarea class="form-control mt-2" name="alamat_pelanggan" rows="5" readonly></textarea>
           </div>
           <div class="row mb-3">
             <div class="col">
               <label for="provinsi" class="form-label" style="color:#64bcf4">Provinsi</label>
-              <select class="form-select" aria-label="Default select example" name="provinsi">
+              <select class="form-select" aria-label="Default select example" name="provinsi" required>
 
               </select>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
               <input type="text" class="form-control mt-2" name="nama_provinsi" readonly>
             </div>
             <div class="col">
               <label for="kabupaten-kota" class="form-label" style="color:#64bcf4">Kabupaten/Kota</label>
-              <select class="form-select" aria-label="Default select example" name="kabupaten-kota">
+              <select class="form-select" aria-label="Default select example" name="kabupaten-kota" required>
 
               </select>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
               <input type="text" class="form-control mt-2" name="nama_kabkota" readonly>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col">
               <label for="jenis-ekspedisi" class="form-label" style="color:#64bcf4">Jenis Ekspedisi</label>
-              <select class="form-select" aria-label="Default select example" name="tipe-ekspedisi">
-                <option value="" selected>Pilih Ekspedisi</option>
+              <select class="form-select" aria-label="Default select example" name="tipe-ekspedisi" required>
+                <option value="">Pilih Ekspedisi</option>
                 <option value="jne">JNE</option>
                 <option value="pos">POS INDONESIA</option>
               </select>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
               <input type="text" class="form-control mt-2" name="nama_ekspedisi" readonly>
             </div>
             <div class="col">
               <label for="jenis-paket" class="form-label" style="color:#64bcf4">Jenis Paket</label>
-              <select class="form-select" aria-label="Default select example" name="jenis-paket">
+              <select class="form-select" aria-label="Default select example" name="jenis-paket" required>
 
               </select>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
               <input type="text" class="form-control mt-2" name="nama_paket" readonly>
             </div>
           </div>
@@ -158,7 +163,8 @@ if(! isset($_SESSION['is_login']))
             <label for="nomor_telepon" class="form-label" style="color:#64bcf4">Nomor Telepon</label>
             <div class="input-group col-sm">
               <span class="input-group-text">+62</span>
-              <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telepon">
+              <input type="text" class="form-control" name="nomor_telepon" id="nomor_telepon" placeholder="Nomor Telepon" required>
+              <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
             <div class="input-group col-sm">
               <span class="input-group-text">+62</span>
