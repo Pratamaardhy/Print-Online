@@ -13,7 +13,7 @@ class database{
 
 	function register($username,$password,$nama,$level="user")
 	{	
-		$insert = mysqli_query($this->koneksi,"insert into tb_user values ('','$username','$password','$nama','$level')");
+		$insert = mysqli_query($this->koneksi,"insert into tb_user values (' ','$username','$password','$nama','$level')");
 		return $insert;
 	}
 

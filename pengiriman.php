@@ -7,7 +7,7 @@ if(! isset($_SESSION['is_login']))
   header('location:login.php');
 }
  
- if(isset($_POST['button-pengiriman'])){
+if(isset($_POST['button-pengiriman'])){
 
   $_SESSION['alamat'] = $_POST['alamat_pelanggan'];
   $alamat = $_POST['alamat_pelanggan'];
@@ -20,7 +20,7 @@ if(! isset($_SESSION['is_login']))
   $estimasi = $_POST['estimasi'];
   $no_telp = $_POST['telp_pelanggan'];
 
-  $insert = "INSERT INTO `tb_pengiriman`(`id_pengiriman`, `alamat`, `provinsi`, `kota`, `ekspedisi`, `paket`, `berat`, `ongkir`, `estimasi`, `nohp`) VALUES 
+  $insert = "INSERT INTO `tb_pengiriman`(`id`, `alamat`, `provinsi`, `kota`, `ekspedisi`, `paket`, `berat`, `ongkir`, `estimasi`, `nohp`) VALUES 
               ('','$alamat','$provinsi','$kabupaten_kota','$jenis_ekspedisi','$jenis_paket','$berat_paket','$ongkir','$estimasi','$no_telp')";
 
   mysqli_query(connection(),$insert);
