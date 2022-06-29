@@ -7,29 +7,14 @@ if(! isset($_SESSION['is_login']))
   header('location:login.php');
 }
 
-$query = mysqli_query($connect, "SELECT * FROM tb_pengiriman ORDER BY id_pengiriman DESC");
+$query = mysqli_query($connect, "SELECT * FROM tb_pengiriman ORDER BY id DESC");
 $result = mysqli_fetch_array($query);
-
-$login = mysqli_query($connect, "SELECT * FROM tb_user ORDER BY id DESC");
-$user = mysqli_fetch_array($login);
-
-$jenis = mysqli_query($connect, "SELECT * FROM tb_order,tb_jenisproduk ORDER BY id_order DESC");
-$produk = mysqli_fetch_array($jenis);
-
-$ukuran = mysqli_query($connect, "SELECT * FROM tb_order,tb_ukurankertas ORDER BY id_order DESC");
-$kertas = mysqli_fetch_array($ukuran);
 
 $jumlah = mysqli_query($connect, "SELECT * FROM tb_order ORDER BY jumlah_halaman DESC");
 $halaman = mysqli_fetch_array($jumlah);
 
 $jml = mysqli_query($connect, "SELECT * FROM tb_order ORDER BY jml_order DESC");
 $order = mysqli_fetch_array($jml);
-
-$opsi = mysqli_query($connect, "SELECT * FROM tb_order,tb_opsiprint ORDER BY id_order DESC");
-$print = mysqli_fetch_array($opsi);
-
-$metode = mysqli_query($connect, "SELECT * FROM tb_order,tb_pembayaran ORDER BY id_order DESC");
-$pembayaran = mysqli_fetch_array($metode);
 
 $harga=1000;
 
@@ -124,7 +109,7 @@ if(isset($_POST['ulang'])){
                       <tr>
                         <td class="tbl-kecil">Nama Pembeli</td>
                         <td class="tbl-titik">:</td>
-                        <td><?php echo $user['username']?></td>
+                        <td><?php echo $_SESSION['nama']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Nomor Pesanan</td>
@@ -144,12 +129,12 @@ if(isset($_POST['ulang'])){
                       <tr>
                         <td class="tbl-kecil">Jenis Produk</td>
                         <td class="tbl-titik">:</td>
-                        <td><?php echo $produk['jenis_produk']?></td>
+                        <td><?php echo $_SESSION['jenis_produk']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Ukuran Kertas</td>
                         <td class="tbl-titik">:</td>
-                        <td><?php echo $kertas['ukuran_kertas']?></td>
+                        <td><?php echo $_SESSION['ukuran_kertas']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Jumlah Halaman</td>
@@ -164,12 +149,12 @@ if(isset($_POST['ulang'])){
                       <tr>
                         <td class="tbl-kecil">Opsi Print</td>
                         <td class="tbl-titik">:</td>
-                        <td><?php echo $print['ops_print']?></td>
+                        <td><?php echo $_SESSION['opsi_print']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Metode Pembayaran</td>
                         <td class="tbl-titik">:</td>
-                        <td><?php echo $pembayaran['metode_pembayaran']?></td>
+                        <td><?php echo $_SESSION['metode']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Biaya Print</td>

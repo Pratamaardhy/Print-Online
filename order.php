@@ -69,31 +69,23 @@ if(! isset($_SESSION['is_login']))
           <h5 style="color: #64bcf4;" class="mb-3">Rincian Produk</h5>
           <div class="mb-3">
             <label for="jenis-produk" class="form-label" style="color:#64bcf4">Jenis Produk</label>
-            <select class="form-select" aria-label="Default select example" name="id_jp" required>
+            <select class="form-select" aria-label="Default select example" name="jenis_produk" required>
               <option value="">Jenis Produk</option>
-              <?php
-                include "connect.php";
-                $query = mysqli_query($connect, "SELECT * FROM tb_jenisproduk") or die (mysqli_error($connect));
-                while($data = mysqli_fetch_array($query))
-                {
-                echo"<option value=$data[id_jp]> $data[jenis_produk] </option>";
-                }
-              ?>
+              <option value="Print Warna">Print Warna</option>
+              <option value="Print Hitam Putih">Print Hitam Putih</option>
+              <option value="Print Foto">Print Foto</option>
             </select>
             <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
           </div>
           <div class="row mb-3">
             <div class="col">
               <label for="ukuran-kertas" class="form-label" style="color:#64bcf4">Pilih Ukuran Kertas</label>
-              <select class="form-select" aria-label="Default select example" name="id_uk" required>
+              <select class="form-select" aria-label="Default select example" name="ukuran_kertas" required>
                 <option value="">Pilih Ukuran Kertas</option>
-                <?php
-                  include "connect.php";
-                  $query = mysqli_query($connect, "SELECT * FROM tb_ukurankertas") or die (mysqli_error($connect));
-                  while($data = mysqli_fetch_array($query)){
-                    echo"<option value=$data[id_uk]> $data[ukuran_kertas] </option>";
-                  }
-                ?>
+                <option value="A4">A4</option>
+                <option value="F4">F4</option>
+                <option value="Legal">Legal</option>
+                <option value="A3">A3</option>
               </select>
               <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
@@ -112,15 +104,10 @@ if(! isset($_SESSION['is_login']))
             </div>
             <div class="col">
               <label for="opsi-print" class="form-label" style="color:#64bcf4">Pilih Opsi Print</label>
-              <select class="form-select" aria-label="Default select example" name="id_op" required>
+              <select class="form-select" aria-label="Default select example" name="opsi_print" required>
                 <option value="">Pilih Opsi Print</option>
-                <?php
-                  include "connect.php";
-                  $query = mysqli_query($connect, "SELECT * FROM tb_opsiprint") or die (mysqli_error($connect));
-                  while($data = mysqli_fetch_array($query)){
-                    echo"<option value=$data[id_op]> $data[ops_print] </option>";
-                  }
-                ?>
+                <option value="Print Satu Sisi">Print Satu Sisi</option>
+                <option value="Print Bolak Balik">Print Bolak Balik</option>
               </select>
               <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
@@ -129,15 +116,10 @@ if(! isset($_SESSION['is_login']))
 
         <div class="container mb-5">
           <label for="metode-pembayaran" class="form-label" style="color:#64bcf4">Metode Pembayaran</label>
-          <select class="form-select" aria-label="Default select example" name="id_mp" required>
+          <select class="form-select" aria-label="Default select example" name="metode" required>
             <option value="">Pilih Metode Pembayaran</option>
-            <?php
-                    include "connect.php";
-                    $query = mysqli_query($connect, "SELECT * FROM tb_pembayaran") or die (mysqli_error($connect));
-                    while($data = mysqli_fetch_array($query)){
-                      echo"<option value=$data[id_mp]> $data[metode_pembayaran] </option>";
-                    }
-                  ?>
+            <option value="Cash On Delivery">Cash On Delivery</option>
+            <option value="Transfer Bank">Transfer Bank</option>
           </select>
           <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
         </div>
@@ -157,17 +139,18 @@ if(! isset($_SESSION['is_login']))
     <?php
         
         if(isset($_POST['proses'])){
-
+          include "connect.php";
           $_SESSION['link_dokumen'] = $_POST['link_dokumen'];
-          
-          mysqli_query($connect, "insert into tb_order set
-          id_jp = '$_POST[id_jp]',
-          id_uk = '$_POST[id_uk]',
-          jumlah_halaman = '$_POST[jumlah_halaman]',
-          jml_order = '$_POST[jml_order]',
-          id_op = '$_POST[id_op]',
-          id_mp = '$_POST[id_mp]',
-          link_dokumen = '$_POST[link_dokumen]'") or die (mysqli_error($connect));
+          $_SESSION['jml_order'] = $_POST['jml_order'];
+          $_SESSION['jumlah_halaman'] = $_POST['jumlah_halaman'];
+          $_SESSION['metode'] = $_POST['metode'];
+          $_SESSION['jenis_produk'] = $_POST['jenis_produk'];
+          $_SESSION['ukuran_kertas'] = $_POST['ukuran_kertas'];
+          $_SESSION['opsi_print'] = $_POST['opsi_print'];
+
+          $insert = "INSERT INTO tb_order (id_order, jml_order, jumlah_halaman, link_dokumen, metode, jenis_produk, ukuran_kertas, opsi_print) VALUES ('', '$_SESSION[jml_order]', '$_SESSION[jumlah_halaman]', '$_SESSION[link_dokumen]', '$_SESSION[metode]', '$_SESSION[jenis_produk]', '$_SESSION[ukuran_kertas]', '$_SESSION[opsi_print]')";
+
+          $query = mysqli_query($connect, $insert) or die (mysqli_connect_error($connect));
 
           echo "<script>location.href='pengiriman.php'</script>";
         }
