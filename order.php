@@ -136,11 +136,10 @@ if(! isset($_SESSION['is_login']))
           </div>
         </div>
 
-        <div class="container">
-
+        <div class="container mb-5">
           <label for="metode-pembayaran" class="form-label" style="color:#64bcf4">Metode Pembayaran</label>
           <select class="form-select" aria-label="Default select example" name="id_mp" required>
-            <option value="">Pilih opsi print</option>
+            <option value="">Pilih Metode Pembayaran</option>
             <?php
                     include "connect.php";
                     $query = mysqli_query($connect, "SELECT * FROM tb_pembayaran") or die (mysqli_error($connect));
@@ -149,6 +148,13 @@ if(! isset($_SESSION['is_login']))
                     }
                   ?>
           </select>
+          <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
+        </div>
+
+        <div class="container">
+          <label for="link-dokumen" class="form-label" style="color:#64bcf4">Link Google Drive Dokumen</label>
+          <p>Harap masukkan link google drive dokumen yang akan di print, <strong>FILE HARUS DI SHARE PUBLIK!</strong></p>
+          <input type="text" class="form-control" aria-label="default select example" name="link_dokumen" placeholder="Link Dokumen" required>
           <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
         </div>
     </div>
@@ -167,10 +173,9 @@ if(! isset($_SESSION['is_login']))
           jumlah_halaman = '$_POST[jumlah_halaman]',
           id_jo = '$_POST[id_jo]',
           id_op = '$_POST[id_op]',
-          id_mp = '$_POST[id_mp]'")
-          or die(mysqli_error($connect));
+          id_mp = '$_POST[id_mp]',
+          link_dokumen = '$_POST[link_dokumen]'") or die (mysqli_error($connect));
 
-          echo "<script>alert('Data telah tersimpan')</script>";
           echo "<script>location.href='pengiriman.php'</script>";
         }
 
