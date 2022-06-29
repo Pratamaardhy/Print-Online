@@ -51,13 +51,6 @@ if(! isset($_SESSION['is_login_admin']))
                 <span>Akun Pengguna</span>
               </a>
             </li>
-
-            <li class="sidebar-item">
-              <a href="pesanan.php" class="sidebar-link">
-                <i data-feather="shopping-cart" width="20"></i>
-                <span>Daftar Pesanan</span>
-              </a>
-            </li>
           </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

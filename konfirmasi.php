@@ -1,10 +1,56 @@
 <?php 
+include('conn.php');
+include "connect.php";
 session_start();
 if(! isset($_SESSION['is_login']))
 {
   header('location:login.php');
 }
 
+$query = mysqli_query($connect, "SELECT * FROM tb_pengiriman ORDER BY id_pengiriman DESC");
+$result = mysqli_fetch_array($query);
+
+$login = mysqli_query($connect, "SELECT * FROM tb_user ORDER BY id DESC");
+$user = mysqli_fetch_array($login);
+
+$jenis = mysqli_query($connect, "SELECT * FROM tb_order,tb_jenisproduk ORDER BY id_order DESC");
+$produk = mysqli_fetch_array($jenis);
+
+$ukuran = mysqli_query($connect, "SELECT * FROM tb_order,tb_ukurankertas ORDER BY id_order DESC");
+$kertas = mysqli_fetch_array($ukuran);
+
+$jumlah = mysqli_query($connect, "SELECT * FROM tb_order ORDER BY jumlah_halaman DESC");
+$halaman = mysqli_fetch_array($jumlah);
+
+$jml = mysqli_query($connect, "SELECT * FROM tb_order ORDER BY jml_order DESC");
+$order = mysqli_fetch_array($jml);
+
+$opsi = mysqli_query($connect, "SELECT * FROM tb_order,tb_opsiprint ORDER BY id_order DESC");
+$print = mysqli_fetch_array($opsi);
+
+$metode = mysqli_query($connect, "SELECT * FROM tb_order,tb_pembayaran ORDER BY id_order DESC");
+$pembayaran = mysqli_fetch_array($metode);
+
+$harga=1000;
+
+$alamat = $_SESSION['alamat'];
+$link   = $_SESSION['link_dokumen'];
+
+if(isset($_POST['ulang'])){
+
+
+
+  $del = "DELETE FROM tb_pengiriman WHERE alamat = '$alamat' ";
+  $del2 = "DELETE FROM tb_order WHERE link_dokumen = '$link' ";
+
+  mysqli_query(connection(),$del);
+  mysqli_query(connection(),$del2);
+
+
+ header("Location: /Print-Online/order.php");
+ exit();
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +124,7 @@ if(! isset($_SESSION['is_login']))
                       <tr>
                         <td class="tbl-kecil">Nama Pembeli</td>
                         <td class="tbl-titik">:</td>
-                        <td>Rizky</td>
+                        <td><?php echo $user['username']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Nomor Pesanan</td>
@@ -88,62 +134,62 @@ if(! isset($_SESSION['is_login']))
                       <tr>
                         <td class="tbl-kecil">Alamat Pengiriman</td>
                         <td class="tbl-titik">:</td>
-                        <td>Jalan Raya Taman No. 15 Kel. Taman, Kec. Taman, Kab. Sidoarjo Jawa Timur 61257</td>
+                        <td><?php echo $result['alamat']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Opsi Kurir</td>
                         <td class="tbl-titik">:</td>
-                        <td>Kurir COD</td>
+                        <td><?php echo $result['ekspedisi']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Jenis Produk</td>
                         <td class="tbl-titik">:</td>
-                        <td>Print Warna</td>
+                        <td><?php echo $produk['jenis_produk']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Ukuran Kertas</td>
                         <td class="tbl-titik">:</td>
-                        <td>A4</td>
+                        <td><?php echo $kertas['ukuran_kertas']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Jumlah Halaman</td>
                         <td class="tbl-titik">:</td>
-                        <td>3 Halaman</td>
+                        <td><?php echo $halaman['jumlah_halaman']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Jumlah Order</td>
                         <td class="tbl-titik">:</td>
-                        <td>Print 1 Kali</td>
+                        <td><?php echo $order['jml_order']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Opsi Print</td>
                         <td class="tbl-titik">:</td>
-                        <td>Print Satu Sisi</td>
+                        <td><?php echo $print['ops_print']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Metode Pembayaran</td>
                         <td class="tbl-titik">:</td>
-                        <td>Cash On Delivery</td>
+                        <td><?php echo $pembayaran['metode_pembayaran']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Biaya Print</td>
                         <td class="tbl-titik">:</td>
-                        <td>Rp. 3.000</td>
+                        <td>Rp. 1.000</td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Ongkos Kirim</td>
                         <td class="tbl-titik">:</td>
-                        <td>Rp. 8.000</td>
+                        <td><?php echo $result['ongkir']?></td>
                       </tr>
                       <tr>
                         <td class="tbl-kecil">Total Biaya</td>
                         <td class="tbl-titik">:</td>
-                        <td>Rp. 11.500</td>
-                      </tr>
-                      <tr>
-                        <td class="tbl-kecil"></td>
-                        <td class="tbl-titik"></td>
-                        <td style="font-size: 10pt;">+Rp. 500 Biaya Jasa</td>
+                        <td>
+                          <?php
+                            $c = $harga * $halaman['jumlah_halaman'] * $order['jml_order'] + $result['ongkir'];
+                            echo "$c";
+                          ?>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -154,11 +200,13 @@ if(! isset($_SESSION['is_login']))
         </div>
       </div>
       <div class="container d-flex justify-content-between light my-5">
-        <a href="pengiriman.php" class="button secondary text-center" style="width: 25%;">
-          <i class="fa-solid fa-arrow-left pe-2" style="color: #64bcf4"></i>
-          Kembali
-        </a>
-        <a href="pembayaran.php" class="button text-center" style="width: 25%;">
+        <form method="POST" action="">
+          <button formaction="konfirmasi.php" name="ulang" class="button secondary text-center">
+            <i class="fa-solid fa-arrow-left pe-2" style="color: #64bcf4"></i>
+            Kembali
+          </button>
+        </form>
+        <a href="pembayaran.php" class="button text-center" style="width: 30%;">
           Lanjutkan Ke Pembayaran
           <i class="fa-solid fa-arrow-right ps-2" style="color: #fff"></i>
         </a>

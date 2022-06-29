@@ -107,16 +107,7 @@ if(! isset($_SESSION['is_login']))
           <div class="row mb-5">
             <div class="col">
               <label for="jumlah-order" class="form-label" style="color:#64bcf4">Pilih Jumlah Order</label>
-              <select class="form-select" aria-label="Default select example" name="id_jo" required>
-                <option value="">Pilih Jumlah Order</option>
-                <?php
-                  include "connect.php";
-                  $query = mysqli_query($connect, "SELECT * FROM tb_jumlahorder") or die (mysqli_error($connect));
-                  while($data = mysqli_fetch_array($query)){
-                    echo"<option value=$data[id_jo]> $data[jml_order] </option>";
-                  }
-                ?>
-              </select>
+              <input type="text" class="form-control" aria-label="default select example" name="jml_order" placeholder="1 (Kali)" required>
               <div class="invalid-feedback">Mohon isi bagian ini terlebih dahulu!</div>
             </div>
             <div class="col">
@@ -167,11 +158,13 @@ if(! isset($_SESSION['is_login']))
         
         if(isset($_POST['proses'])){
 
+          $_SESSION['link_dokumen'] = $_POST['link_dokumen'];
+          
           mysqli_query($connect, "insert into tb_order set
           id_jp = '$_POST[id_jp]',
           id_uk = '$_POST[id_uk]',
           jumlah_halaman = '$_POST[jumlah_halaman]',
-          id_jo = '$_POST[id_jo]',
+          jml_order = '$_POST[jml_order]',
           id_op = '$_POST[id_op]',
           id_mp = '$_POST[id_mp]',
           link_dokumen = '$_POST[link_dokumen]'") or die (mysqli_error($connect));
