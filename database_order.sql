@@ -91,6 +91,7 @@ CREATE TABLE `tb_order` (
   `id_jp` int(3) NOT NULL,
   `id_uk` int(3) NOT NULL,
   `jumlah_halaman` int(3) NOT NULL,
+  `jml_order` int(5) NOT NULL,
   `id_jo` int(3) NOT NULL,
   `id_op` int(3) NOT NULL,
   `id_mp` int(3) NOT NULL,
@@ -145,7 +146,7 @@ INSERT INTO `tb_pembayaran` (`id_mp`, `metode_pembayaran`) VALUES
 --
 
 CREATE TABLE `tb_pengiriman` (
-  `id` int(11) NOT NULL,
+  `id_pengiriman` int(11) NOT NULL,
   `alamat` mediumtext NOT NULL,
   `provinsi` varchar(100) NOT NULL,
   `kota` text NOT NULL,
@@ -161,7 +162,7 @@ CREATE TABLE `tb_pengiriman` (
 -- Dumping data for table `tb_pengiriman`
 --
 
-INSERT INTO `tb_pengiriman` (`id`, `alamat`, `provinsi`, `kota`, `ekspedisi`, `paket`, `berat`, `ongkir`, `estimasi`, `nohp`) VALUES
+INSERT INTO `tb_pengiriman` (`id_pengiriman`, `alamat`, `provinsi`, `kota`, `ekspedisi`, `paket`, `berat`, `ongkir`, `estimasi`, `nohp`) VALUES
 (10, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Jawa Timur', 'Kabupaten Sidoarjo', 'jne', 'YES', '1000', '10000', '1-1 hari', '082244026525'),
 (11, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Jawa Timur', 'Kota Madiun', 'jne', 'OKE', '1000', '7000', '2-3 hari', '082244026525'),
 (12, 'Geluran 1/24 A RT 01 RW 01 Geluran Taman', 'Jawa Timur', 'Kabupaten Bondowoso', 'jne', 'OKE', '1000', '7000', '2-3 hari', '082244026525'),
@@ -178,6 +179,13 @@ CREATE TABLE `tb_transaksi` (
   `id_order` int(11) NOT NULL,
   `id_pengiriman` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_transaksi`
+--
+
+INSERT INTO `tb_transaksi` (`id`, `id_order`, `id_pengiriman`) VALUES
+(1, 17, 14);
 
 -- --------------------------------------------------------
 
@@ -262,7 +270,7 @@ ALTER TABLE `tb_pembayaran`
 -- Indexes for table `tb_pengiriman`
 --
 ALTER TABLE `tb_pengiriman`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_pengiriman`);
 
 --
 -- Indexes for table `tb_transaksi`
@@ -351,7 +359,7 @@ ALTER TABLE `tb_user`
 --
 ALTER TABLE `tb_transaksi`
   ADD CONSTRAINT `tb_transaksi_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `tb_order` (`id_order`),
-  ADD CONSTRAINT `tb_transaksi_ibfk_2` FOREIGN KEY (`id_pengiriman`) REFERENCES `tb_pengiriman` (`id`);
+  ADD CONSTRAINT `tb_transaksi_ibfk_2` FOREIGN KEY (`id_pengiriman`) REFERENCES `tb_pengiriman` (`id_pengiriman`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,6 +9,7 @@ if(! isset($_SESSION['is_login']))
  
  if(isset($_POST['button-pengiriman'])){
 
+  $_SESSION['alamat'] = $_POST['alamat_pelanggan'];
   $alamat = $_POST['alamat_pelanggan'];
   $provinsi = $_POST['nama_provinsi'];
   $kabupaten_kota = $_POST['nama_kabkota'];
@@ -19,13 +20,27 @@ if(! isset($_SESSION['is_login']))
   $estimasi = $_POST['estimasi'];
   $no_telp = $_POST['telp_pelanggan'];
 
-  $insert = "INSERT INTO `tb_pengiriman`(`id`, `alamat`, `provinsi`, `kota`, `ekspedisi`, `paket`, `berat`, `ongkir`, `estimasi`, `nohp`) VALUES 
+  $insert = "INSERT INTO `tb_pengiriman`(`id_pengiriman`, `alamat`, `provinsi`, `kota`, `ekspedisi`, `paket`, `berat`, `ongkir`, `estimasi`, `nohp`) VALUES 
               ('','$alamat','$provinsi','$kabupaten_kota','$jenis_ekspedisi','$jenis_paket','$berat_paket','$ongkir','$estimasi','$no_telp')";
 
   mysqli_query(connection(),$insert);
 
   header("Location: /Print-Online/konfirmasi.php");
   exit();              
+}
+
+$link   = $_SESSION['link_dokumen'];
+
+if(isset($_POST['ulang'])){
+  
+  $del2 = "DELETE FROM tb_order WHERE link_dokumen = '$link' ";
+
+  mysqli_query(connection(),$del2);
+
+
+ header("Location: /Print-Online/order.php");
+ exit();
+
 }
 
 ?>
@@ -174,10 +189,12 @@ if(! isset($_SESSION['is_login']))
         </div>
 
         <div class="container d-flex justify-content-between light my-5">
-          <a href="order.php" class="button secondary text-center" style="width: 25%;">
-            <i class="fa-solid fa-arrow-left pe-2" style="color: #64bcf4"></i>
-            Kembali
-          </a>
+          <form method="POST" action="">
+            <button formaction="pengiriman.php" name="ulang" class="button secondary text-center">
+              <i class="fa-solid fa-arrow-left pe-2" style="color: #64bcf4"></i>
+              Kembali
+            </button>
+          </form>
           <button type="submit" class="button text-center" name="button-pengiriman" style="width: 25%;" formaction="pengiriman.php">
             Lanjutkan
             <i class="fa-solid fa-arrow-right ps-2" style="color: #fff"></i>
